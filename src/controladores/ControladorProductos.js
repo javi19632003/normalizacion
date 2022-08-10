@@ -1,6 +1,6 @@
-const Controller = require("../clases/productsDB");
-const conexion   = require('../conexiones/mysql');
-const productsDB = new Controller(conexion,"products");
+import { ProductsDB }  from "../clases/productsDB.js";
+import { conexion }  from '../conexiones/mysql.js';
+const productsDB = new ProductsDB(conexion,"products");
 //const knexMisql  = require('knex')(coneMisql);
 
 const productsController = {
@@ -52,4 +52,4 @@ const productsController = {
   },
 };
 
-module.exports = productsController;
+export { productsController };

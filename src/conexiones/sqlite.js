@@ -6,4 +6,4 @@ const conexion = {
   useNullAsDefault: true
 };
 
-module.exports = conexion ;
+export { conexion } ;

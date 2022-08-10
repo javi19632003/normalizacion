@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "ejercios para saber más",
   "main": "src/index.js",
+  "type": "module",
   "scripts": {
     "start": "nodemon src/index.js",
     "scss-watch": "sass --no-source-map --watch public/css/app.scss public/css/app.css",
@@ -12,11 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^7.4.0",
     "cors": "^2.8.5",
     "express": "^4.18.0",
-    "socket.io": "^4.5.0",
     "knex": "^0.95.15",
     "mysql": "^2.18.1",
+    "socket.io": "^4.5.0",
     "sqlite3": "^5.0.8"
   },
   "devDependencies": {

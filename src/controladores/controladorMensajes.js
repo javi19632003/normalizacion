@@ -1,8 +1,8 @@
-const Controller = require("../clases/productsDB");
-const coneLite  = require('../conexiones/sqlite')
+import { ProductsDB }  from "../clases/productsDB.js";
+import { conexion }    from '../conexiones/sqlite.js'
 //const knexLite  = require('knex')(coneLite)
 //console.log(coneLite)
-const messagesDB = new Controller(coneLite, "mensa");
+const messagesDB = new ProductsDB(conexion, "mensa");
 
 const messagesController = {
   getAllMessages: async () => {
@@ -43,4 +43,4 @@ const messagesController = {
   },
 };
 
-module.exports = messagesController;
+export { messagesController };

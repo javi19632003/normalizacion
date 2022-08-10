@@ -9,4 +9,4 @@ const conexion = {
     }
 }
 
-module.exports = conexion
+export { conexion } 

@@ -1,4 +1,4 @@
-const fs = require("fs");
+import fs  from "fs";
 class Products {
   constructor(name) {
     this.name     = name;
@@ -79,5 +79,5 @@ class Products {
   }
 }
 
-module.exports = Products;
+export { Products } ;
 

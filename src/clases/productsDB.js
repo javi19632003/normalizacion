@@ -1,12 +1,12 @@
 //const fs    = require("fs");
 //const knex  = require('knex')(this.conexion)
-
+import  knex  from 'knex'
 
 class ProductsDB {
   constructor(conexion, name) {
     this.conexion = conexion;
     this.name     = name;
-    this.knex  = require('knex')(this.conexion);
+    this.knex  = knex(this.conexion);
   }
 
   async getAllProducts() {
@@ -34,5 +34,5 @@ class ProductsDB {
 
 }
 
-module.exports = ProductsDB;
-
+//export {ProductsDB};
+export { ProductsDB } 

@@ -1,18 +1,24 @@
-const express = require("express");
-const cors = require("cors");
+import express  from "express";
+import cors from "cors";
 
-const { Server: HttpServer } = require("http");
-const { Server: IOServer } = require("socket.io");
+import { Server as HttpServer } from "http";
+import { createServer } from "http";
 
-const productsController = require("../controladores/ControladorProductos");
-const messagesController = require("../controladores/controladorMensajes");
+import { Server as  IOServer }  from "socket.io";
 
+import { productsController } from "../controladores/ControladorProductos.js";
+import { messagesController } from "../controladores/controladorMensajes.js";
+
+import { router } from  "../rutas/products.js"
+
+//export {ContenedorMongo}
 
 class Server {
   constructor() {
     this.app = express();
     this.port = 8080;
-    this.server = require("http").createServer(this.app);
+//    this.server = require("http").createServer(this.app);
+    this.server = createServer(this.app);
     this.httpServer = new HttpServer(this.app);
     this.io = new IOServer(this.httpServer);
     // middleware
@@ -34,7 +40,7 @@ class Server {
   }
 
   routes() {
-    this.app.use("/", require("../rutas/products"));
+    this.app.use("/", router);
   }
 
   socket() {
@@ -73,4 +79,4 @@ class Server {
   }
 }
 
-module.exports = Server;
+export { Server } ;
