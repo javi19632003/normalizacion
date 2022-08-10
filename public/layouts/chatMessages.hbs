@@ -1,0 +1,23 @@
+ {{#if allMessages}}
+<thead class="thead-light">
+    <tr>
+      <th scope="col">Usuario</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Mensaje</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each allMessages}}
+  <tr>
+      <td>{{this.email}}</td>
+      <td>{{this.date}}</td>
+      <td>{{this.messageText}}</td>
+  </tr>
+    {{/each}}
+
+  {{else}}
+    <tr>
+    <td><h4>No hay mensajes para mostrar</h4></td>
+    </tr>
+  {{/if}}
+</tbody>
