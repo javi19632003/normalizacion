@@ -1,6 +1,7 @@
 
-const conexion = require('../conexiones/mysql')
-const knex     = require('knex')(conexion)
+import {conexion} from '../conexiones/mysql.js'
+import miKnex     from 'knex';
+const knex  = miKnex(conexion);
 
 const modeloMysql = ( async () => {
     try {
@@ -25,4 +26,4 @@ const modeloMysql = ( async () => {
     }
 })
 
-module.exports = modeloMysql
+export { modeloMysql }

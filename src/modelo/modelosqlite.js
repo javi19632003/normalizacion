@@ -1,5 +1,6 @@
-const conexion = require('../conexiones/sqlite')
-const knex = require('knex')(conexion)
+import {conexion} from '../conexiones/sqlite.js'
+import miKnex     from 'knex';
+const knex  = miKnex(conexion);
 
 
 const modeloSqLite = ( async () => {
@@ -10,9 +11,13 @@ const modeloSqLite = ( async () => {
 
         await knex.schema.createTable('mensa', table => {
             table.increments('id').primary()
-            table.string('email').notNullable()
-            table.string('date').notNullable()
+            table.string('nombre').notNullable()
+            table.string('Apellido').notNullable()
+            table.string('Edad').notNullable()
+            table.string('alias').notNullable()
+            table.string('avatar').notNullable()
             table.string('messageText').notNullable()
+            table.string('date').notNullable()
         })
 
         console.log('TABLA DE MENSAGES CREADA !!!!!!');
@@ -25,4 +30,4 @@ const modeloSqLite = ( async () => {
     }
 })
 
-module.exports = modeloSqLite
+export { modeloSqLite }

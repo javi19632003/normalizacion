@@ -40,8 +40,13 @@ $(function () {
     event.preventDefault();
 
     const newMessage = {
-      email: chatForm[0][0].value,
-      messageText: chatForm[0][1].value,
+      id: chatForm[0][0].value,
+      nombre: chatForm[0][1].value,
+      apellido: chatForm[0][2].value,
+      edad : chatForm[0][3].value,
+      alias : chatForm[0][4].value,
+      avatar: chatForm[0][5].value,
+      messageText: chatForm[0][6].value,
     };
 
     socket.emit("addNewMessage", newMessage);

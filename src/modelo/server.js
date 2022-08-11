@@ -15,10 +15,10 @@ import { router } from  "../rutas/products.js"
 
 class Server {
   constructor() {
-    this.app = express();
-    this.port = 8080;
+    this.app        = express();
+    this.port       = 8080;
 //    this.server = require("http").createServer(this.app);
-    this.server = createServer(this.app);
+    this.server     = createServer(this.app);
     this.httpServer = new HttpServer(this.app);
     this.io = new IOServer(this.httpServer);
     // middleware

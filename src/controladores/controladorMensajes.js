@@ -15,6 +15,7 @@ const messagesController = {
   },
 
   addNewMessage: async (message) => {
+    console.log(message)
     try {
       const prevMessages = await messagesDB.getAllProducts();
       const currentDate = new Date().toLocaleString();
