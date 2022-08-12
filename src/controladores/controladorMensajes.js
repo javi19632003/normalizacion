@@ -1,46 +1,50 @@
-import { ProductsDB }  from "../clases/productsDB.js";
-import { conexion }    from '../conexiones/sqlite.js'
+//import { ProductsDB }  from "../clases/productsDB.js";
+//import { conexion }    from '../conexiones/sqlite.js'
 //const knexLite  = require('knex')(coneLite)
 //console.log(coneLite)
-const messagesDB = new ProductsDB(conexion, "mensa");
+//const messagesDB = new ProductsDB(conexion, "mensa");
+
+import mongoose from "mongoose";
+import { mensajes } from "../modelo/mensajes.js";
+
+    try {
+        mongoose.connect( 
+          "mongodb://localhost:27017/ecommerce",
+            {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            }
+           
+        )  
+        console.log("conectado")  
+    } catch (error) {
+        throw new Error(error)        
+    }
 
 const messagesController = {
   getAllMessages: async () => {
     try {
-     const allMessages = await messagesDB.getAllProducts();
-      return allMessages;
-    } catch (error) {
-      console.log(`ERROR: ${error}`);
-    }
+      const resultado = await mensajes.find()
+      return resultado
+  } catch (error) {
+      throw new Error(error)        
+  }
+
   },
 
   addNewMessage: async (message) => {
-    console.log(message)
     try {
-      const prevMessages = await messagesDB.getAllProducts();
-      const currentDate = new Date().toLocaleString();
-
-      const getNewId = () => {
-        let lastID = 0;
-        if (prevMessages.length) {
-          lastID = prevMessages[prevMessages.length - 1].id;
-        }
-        return lastID + 1;
-      };
-
-      const newMessage = {
-        id: getNewId(),
-        email: message.email ? message.email : "user@email.com",
-        date: currentDate,
-        messageText: message.messageText
-          ? message.messageText
-          : "(Empty message)",
-      };
-
-      await messagesDB.createProduct(newMessage);
-    } catch (error) {
-      console.log(`ERROR: ${error}`);
-    }
+      console.log(message)
+      const nuevo = new mensajes(message)
+      console.log(nuevo)
+      nuevo.save( function(err, prod){
+          if (err) return console.error(err);
+              console.log(prod);
+      })
+      return {"OK":"OK"} 
+  } catch (error) {
+      throw new Error(error)
+  }
   },
 };
 

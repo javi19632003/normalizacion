@@ -2,15 +2,13 @@
 <thead class="thead-light">
     <tr>
       <th scope="col">Usuario</th>
-      <th scope="col">Fecha</th>
       <th scope="col">Mensaje</th>
     </tr>
   </thead>
   <tbody>
     {{#each allMessages}}
   <tr>
-      <td>{{this.email}}</td>
-      <td>{{this.date}}</td>
+      <td>{{this.author.id}}</td>
       <td>{{this.messageText}}</td>
   </tr>
     {{/each}}
