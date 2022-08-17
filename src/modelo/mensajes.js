@@ -11,6 +11,7 @@ const mensaSchema = new mongoose.Schema({
   alias: { type: String, required: true, max: 40 },
   avatar: { type: String, required: true, max: 100 }
   },
+  idmensa: { type: Number, required: true },
   messageText: { type: String, required: true, max: 100 }
 }, {
   versionKey: false 

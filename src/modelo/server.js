@@ -10,7 +10,7 @@ import { productsController } from "../controladores/ControladorProductos.js";
 import { messagesController } from "../controladores/controladorMensajes.js";
 
 import { router } from  "../rutas/products.js"
-
+import { schema, normalize, denormalize } from "normalizr"
 //export {ContenedorMongo}
 
 class Server {

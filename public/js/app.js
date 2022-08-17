@@ -1,5 +1,6 @@
 const socket = io();
 
+
 $(function () {
   socket.on("socketConnected", () => {
     socket.emit("productListRequest");
@@ -40,16 +41,29 @@ $(function () {
     event.preventDefault();
 
     const newMessage = {
+      
       author:{
-      id:          chatForm[0][0].value,
-      nombre:      chatForm[0][1].value,
-      apellido:    chatForm[0][2].value,
-      edad :       chatForm[0][3].value,
-      alias :      chatForm[0][4].value,
-      avatar:      chatForm[0][5].value,
-      },
+          id:          chatForm[0][0].value,
+          nombre:      chatForm[0][1].value,
+          apellido:    chatForm[0][2].value,
+          edad :       chatForm[0][3].value,
+          alias :      chatForm[0][4].value,
+          avatar:      chatForm[0][5].value,
+        },
+      idmensa: Date.now(),
       messageText: chatForm[0][6].value,
     };
+    const authorSchema = new  normalizr.schema.Entity("authors");
+    const commentSchema = new normalizr.schema.Entity("comments");
+   
+    const postSchema = new normalizr.schema.Entity("posts", {
+      author: authorSchema,
+      messageText: [commentSchema],
+    });
+    
+    const normalizedMensa = normalizr.normalize(newMessage, postSchema);
+    console.log('NORMALIZA')
+    console.log(normalizedMensa)
     socket.emit("addNewMessage", newMessage);
     chatForm.trigger("reset");
   });

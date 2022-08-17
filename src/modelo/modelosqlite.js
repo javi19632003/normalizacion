@@ -17,6 +17,7 @@ const modeloSqLite = ( async () => {
             table.string('alias').notNullable()
             table.string('avatar').notNullable()
             table.string('messageText').notNullable()
+            table.string('idmensa').notNullable()
             table.string('date').notNullable()
         })
 
